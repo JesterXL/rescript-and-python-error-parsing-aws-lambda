@@ -1,0 +1,1 @@
+[Blog Post covering this code](https://jessewarden.com/2022/05/parsing-lambda-error-logs-in-rescript-python.html). 

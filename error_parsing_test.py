@@ -1,0 +1,16 @@
+from error_parsing import send_error_to_sns
+
+class SNSStub():
+    def publish(self, **kwargs):
+        return {'messageID': 'some message id'}
+     
+event_stub = {
+  "awslogs": {
+    "data": "H4sIAAAAAAAAAO1VXYvbOBT9K8IU2oU4smX582kDmw6FDoVJ6MOOh0G2bhLN2HJWUjIpIf99rx1nZsps2T72ocZIsnTuuVfnHvDRa8FasYblty14hffXbDm7v54vFrOruTfxuicNBrdznjKWsjzmQYLbTbe+Mt1uiydUPFnaiLaSgjad0A0IC7Vo6l0jXGfEVvkS9v4a3LXSqt21My2vxaFffVRa6BpmbbfT7sy6cAZEi7QsYIwGEQ05vX33ebacL5Z3q1imfBXKPBQ1T2MuwizlWRxFeVSlWRIghd1VtjZq61SnP6rGgbFeces5sM67GzLM96Bdv3n0lMREUZJGcZayOMrTNI+iOGIsSWLOGVImQZLnPEuTLAh5ErCE8SQMeIJATOYUaudEizKECQqURzxPMhZMLpqO9/CDyA/5koVFhG8yzcL879JJAJFzDn4CvPI5T1M/i0Pmh2EoeVhDLsWqdPObmy83pfuk990jkLkxnSGlO5Ye9Mu+aaVXlN5wUHqTcf/6nH84OpZl6W0MrPq56AeKTaEWmwOWbo2qlV7TkEX90aQfBopn9EqoBiRxHcEeEryvA2LBOYyyZIXlSBANmCnBsIJ8jx7MQJw4EINhI2RMuQCzVzUQrGLbaYlBT8ptiCC60z47HIZUO0vqTmLkGWWhwNU/O5SdVJ38RjbCEqHJUHFBZAdWv3ekFa7eELfBQusNtKIYhROOlOcHNZASOS0dLnTZLUh7NikmN1gjXkCvsShlCesBenHmG9aEHMeZPNNKeLbfC+dlxUi9EUbU6MpRR1FVBvZK9PjpBTZ5wwoHNFkDbxm/zn4c1IrD56H6lzD2HyilfwLlep+9yX7W6PI1Bp2GeRi+imYHF61ew57hl8E7Dd5FUepHzHA7Grogv83727w/tuUvZd4+JfboS/UAtZsaoSycG/eB7oWhTthHqtEO920ndw26908z6o1tlLRRFX2w+N7DQU8fbJEV+R+viV9YrKnp1f/9T3sKFjL85bwm2ZquRuMsVf1oMfAG+mKxf5Z8UBpbq0VDR8yQ6x7tiobtyfK4iLGgu1OpvdPd6V+SXOSWOQgAAA=="
+  }
+}
+
+def test_send_error_to_sns_happy_path():
+    assert send_error_to_sns(SNSStub(), event_stub) == 'some message id'
+
+
